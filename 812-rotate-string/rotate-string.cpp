@@ -7,7 +7,7 @@ public:
         if(n != m){
             return false;
         }
-        for(int count = 1; count<= n; count++){
+        for(int i = 1; i<= n; i++){
             rotate(begin(s),begin(s)+1,end(s));
 
             if(s == goal){
