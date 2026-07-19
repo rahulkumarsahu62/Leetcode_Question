@@ -5,9 +5,9 @@ public:
         int minprice = prices[0];
         int maxprofit = 0;
         for(int i = 0; i<n;i++){
-            minprice = min(prices[i],minprice);
             int profit = prices[i] - minprice;
             maxprofit = max(profit,maxprofit);
+            minprice = min(prices[i],minprice);
         }
         return maxprofit;
     }
