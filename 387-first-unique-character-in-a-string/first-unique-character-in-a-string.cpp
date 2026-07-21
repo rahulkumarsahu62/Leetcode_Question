@@ -1,15 +1,15 @@
 class Solution {
 public:
     int firstUniqChar(string s) {
-        for(int i = 0;i<s.size();i++){
-            bool isUnique = true;
-            for(int j= 0;j<s.size();j++ ){
-                if(i != j && s[i] == s[j]){
-                 isUnique = false; 
-                 break;
-                }
-            }
-            if(isUnique) return i;
+        vector<int> freq(26,0);
+
+        for(int i = 0; i< s.size(); i++){
+            char ch = s[i];
+            freq[ch - 'a']++;
+        }
+        for(int i = 0; i<s.size();i++){
+            if(freq[s[i] - 'a'] == 1)
+            return i;
         }
         return -1;
     }
