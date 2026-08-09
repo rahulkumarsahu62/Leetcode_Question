@@ -1,34 +1,23 @@
 class Solution {
 public:
     vector<int> asteroidCollision(vector<int>& asteroids) {
-        vector<int> st; // use vector as stack
-
-        for(int i = 0; i<asteroids.size(); i++){
-            int a = asteroids[i];
-        
-         // check collision
-        while (!st.empty() &&  st.back() > 0 && a <0){
-            // case1: current is bigger -> remove stack top
-            if(abs(st.back()) < abs(a)){
-                st.pop_back();
-            }
-            // case2: both equal -> remove both 
-            else if (abs(st.back()) == abs(a)){
-                st.pop_back();
-                a = 0; // mark current as destroyed
-                break;
-            }
-            // case3: stack top bigger -> current destroyed
-            else{
-                a =0; // current destroyed
-                break;
-            }
+        vector<int> st;
+        for(int i = 0; i<asteroids.size();i++){
+            if(asteroids[i] > 0){ 
+               st.push_back(asteroids[i]);
+           }
+        else{
+            while(!st.empty() && st.back() > 0 && st.back() < abs(asteroids[i])){
+            st.pop_back();
+          }
+        if(!st.empty() && st.back() == abs(asteroids[i])){
+            st.pop_back();
         }
-        // if current asteroid still alive, push it
-        if ( a!= 0){
-            st.push_back(a);
+        else if(st.empty() || st.back() < 0){
+            st.push_back(asteroids[i]);
         }
+     }
     }
-    return st;
+        return st;
     }
 };
