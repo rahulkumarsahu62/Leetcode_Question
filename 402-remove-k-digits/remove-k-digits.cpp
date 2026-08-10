@@ -13,10 +13,11 @@ public:
                 st.push(num[i]); // to avoid the case when we have preceeding zeroes
             }
         }
-        while(!st.empty()  &&  k > 0){
+         while (!st.empty() && k > 0) {
             st.pop();
             k--;
         }
+      
        
         // Convert stack to string
         string result = "";
@@ -27,6 +28,7 @@ public:
 
         reverse(result.begin(), result.end());
 
-        return result.empty() ? "0" : result;
+        if(result.empty()) return "0";
+        return result;
     }
 };
