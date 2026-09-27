@@ -10,7 +10,7 @@ public:
              long long sum = 0;
 
             for (int x : piles) {
-                sum += ((long long )x + mid - 1) / mid;
+                sum += (x + mid - 1) / mid;
             }
 
             if (sum <= h) {
